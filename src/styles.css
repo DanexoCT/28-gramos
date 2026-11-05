@@ -119,8 +119,7 @@ svg { flex-shrink: 0; }
 .events-section .section-topline { position: relative; }
 .events-section .section-topline .stars { color: var(--color-pink); }
 .event-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 10%; align-items: center; margin-top: 42px; }
-.event-wordmark { font-family: var(--font-blackletter); font-size: clamp(84px, 9.8vw, 140px); font-weight: 400; letter-spacing: -.025em; line-height: 1.05; -webkit-text-stroke: .3px currentColor; paint-order: stroke fill; color: var(--color-pink); position: relative; display: inline-block; rotate: -3deg; margin-bottom: 41px; }
-.event-wordmark > span:first-child { letter-spacing: inherit; }
+.event-wordmark { font-family: var(--font-display); font-size: clamp(84px, 9.8vw, 140px); font-weight: 800; font-variant-numeric: lining-nums; letter-spacing: -.025em; line-height: 1; color: var(--color-pink); position: relative; display: inline-block; rotate: -3deg; margin-bottom: 41px; }
 .wordmark-underline { position: absolute; width: 105%; height: 7px; background: var(--color-pink); left: -2%; bottom: -4px; clip-path: polygon(2% 48%, 99% 0, 100% 44%, 0 100%); }
 .event-pill { display: block; width: fit-content; padding: 7px 9px; border: 1px solid #754067; color: #f2afd7; font-size: 7px; letter-spacing: .12em; margin-bottom: 16px; }
 .event-copy h2 { font-family: var(--font-display); font-size: clamp(42px, 4vw, 57px); line-height: 1.02; font-weight: 700; text-transform: uppercase; }
@@ -146,8 +145,7 @@ svg { flex-shrink: 0; }
 .archive-caption p { display: flex; align-items: center; gap: 5px; font-size: 9px; color: #b4a7b8; margin-top: 8px; }
 .status-badge { border: 1px solid #765b72; padding: 6px 8px; font-size: 7px; letter-spacing: .1em; }
 .collective-heading { display: flex; justify-content: space-between; gap: 60px; align-items: flex-end; }
-.collective-heading .section-title { font-family: var(--font-blackletter); font-weight: 400; line-height: 1.04; letter-spacing: -.015em; -webkit-text-stroke: .35px currentColor; paint-order: stroke fill; }
-.collective-heading .section-title .outline-text, .footer-headline h2 .outline-text { color: var(--color-paper); -webkit-text-stroke: .35px currentColor; }
+.collective-heading .section-title { font-family: var(--font-display); font-weight: 800; font-variant-numeric: lining-nums; line-height: .96; letter-spacing: -.02em; }
 .collective-intro { padding-bottom: 4px; min-width: 270px; }
 .collective-intro .stars { color: var(--color-red); }
 .collective-intro p { font-size: 14px; line-height: 1.85; color: #b5adb2; margin-top: 18px; }
@@ -180,7 +178,7 @@ svg { flex-shrink: 0; }
 .merch-small { display: block; font-size: 7px; letter-spacing: .08em; margin-top: 13px; color: #655e64; }
 .footer { padding-bottom: 24px; }
 .footer-headline { display: flex; align-items: center; justify-content: space-between; gap: 40px; margin-top: 43px; }
-.footer-headline h2 { font-family: var(--font-blackletter); font-size: clamp(70px, 9.8vw, 140px); line-height: 1.04; letter-spacing: -.025em; font-weight: 400; -webkit-text-stroke: .35px currentColor; paint-order: stroke fill; }
+.footer-headline h2 { font-family: var(--font-display); font-size: clamp(70px, 9.8vw, 140px); font-weight: 800; font-variant-numeric: lining-nums; line-height: .96; letter-spacing: -.025em; }
 .contact-arrow { display: grid; place-items: center; width: 116px; height: 116px; flex-shrink: 0; border: 1px solid #6d656b; border-radius: 50%; transition: background .2s, color .2s; }
 .contact-arrow svg { width: 62px; height: 62px; }
 .contact-arrow:hover { background: var(--color-paper); color: #080808; }
@@ -417,7 +415,7 @@ svg { flex-shrink: 0; }
   .release-credit { font-size: 8px; line-height: 1.6; }
   .event-layout { grid-template-columns: minmax(0, 1fr); gap: 57px; margin-top: 20px; }
   .event-copy { min-width: 0; }
-  .event-wordmark { font-size: clamp(86px, 22.5vw, 130px); margin-bottom: 33px; }
+  .event-wordmark { font-size: clamp(88px, 28vw, 160px); margin-bottom: 33px; }
   .event-copy h2 { font-size: clamp(43px, 10vw, 65px); }
   .event-description { font-size: 13px; margin-top: 19px; }
   .event-copy .button { margin-top: 23px; }
@@ -454,7 +452,7 @@ svg { flex-shrink: 0; }
   .footer .section-topline > .stars { gap: 3px; }
   .footer .section-topline > .stars svg { width: 11px; height: 11px; }
   .footer-headline { margin-top: 34px; gap: 12px; align-items: flex-end; position: relative; }
-  .footer-headline h2 { font-size: clamp(48px, 12.8vw, 100px); line-height: 1.04; }
+  .footer-headline h2 { font-size: clamp(60px, 12.8vw, 100px); line-height: .96; }
   .contact-arrow { width: 46px; height: 46px; position: absolute; right: 0; top: -4px; }
   .contact-arrow svg { width: 27px; height: 27px; }
   .contact-row { display: block; margin-top: 24px; padding-bottom: 35px; }
@@ -481,8 +479,7 @@ svg { flex-shrink: 0; }
   .release-info h3 { font-size: 17.5vw; }
   .platform-links { display: grid; grid-template-columns: 1fr; }
   .platform-links .button { font-size: 10px; padding-inline: 11px; gap: 8px; }
-  .event-wordmark { font-size: 25.5vw; }
-  .collective-heading .section-title { font-size: 16vw; }
+  .collective-heading .section-title { font-size: 19vw; }
   .footer-headline { flex-direction: column; align-items: flex-start; gap: 20px; }
   .contact-arrow { position: static; align-self: flex-end; width: 40px; height: 40px; }
   .archive-caption { gap: 6px; }
