@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { Stars } from './Primitives'
 import { assetUrl } from '../lib/assets'
 import { SceneAtmosphere } from './VisualEffects'
+import { DistrictRadar, WantedHud } from './StreetDetails'
 
 export function Hero() {
   const [entered, setEntered] = useState(false)
@@ -15,8 +16,9 @@ export function Hero() {
     <div className="hero-photo" aria-hidden="true"><img src={assetUrl('images/collective-1220.webp')} srcSet={`${assetUrl('images/collective-700.webp')} 700w, ${assetUrl('images/collective-1220.webp')} 1220w`} sizes="(max-width: 767px) 100vw, 70vw" alt="" width="1220" height="1224" fetchPriority="high" /></div>
     <div className="hero-shade" aria-hidden="true" />
     <SceneAtmosphere />
+    <WantedHud />
     <div className="hero-content page-shell relative">
-      <div className="hero-eyebrow"><span className="live-dot" />28 GRAMOS RECORDS<span className="eyebrow-divider">/</span>SONIDO UNDERGROUND</div>
+      <div className="hero-eyebrow"><span className="live-dot" /><span>28 GRAMOS RECORDS</span><span className="eyebrow-divider">/</span><span className="hero-category">SONIDO UNDERGROUND</span></div>
       <h1 id="hero-title"><span className="hero-line"><span className="hero-line-text">LA CALLE.</span></span><span className="hero-line"><span className="hero-line-text">EL BAJO.</span></span><span className="hero-line hero-line-last"><span className="hero-last-line hero-line-text">LOS 28.<svg aria-hidden="true" viewBox="0 0 450 25" preserveAspectRatio="none"><path pathLength="1" d="M5 18Q170 0 442 12M45 23Q270 9 420 20" /></svg></span></span></h1>
       <p className="hero-description">Bajo cabrón. Letras sin filtro.<br />Hasta que retumbe la cuadra.</p>
       <div className="hero-buttons flex flex-wrap items-center gap-5">
@@ -24,7 +26,7 @@ export function Hero() {
         <a href="#eventos" className="hero-secondary">Ver eventos<ArrowUpIcon /></a>
       </div>
     </div>
-    <div className="hero-stamp" aria-hidden="true"><span>CÓDIGO DE CALLE.</span><strong>28</strong><Stars /><span>PESO COMPLETO.</span></div>
+    <DistrictRadar />
     <div className="hero-bottom page-shell"><span>BAJO PESADO. CERO POSE.</span><a href="#musica" aria-label="Descubrir la música de 28 Gramos"><span>ENTRA EN EL RUIDO</span><ArrowDown size={17} /></a></div>
   </section>
 }

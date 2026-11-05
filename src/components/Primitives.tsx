@@ -23,7 +23,7 @@ export function Reveal({ children, className = '' }: { children: ReactNode; clas
 }
 
 export function SectionLabel({ number, children, light = false }: { number: string; children: ReactNode; light?: boolean }) {
-  return <div className={`section-label ${light ? 'section-label-light' : ''}`}><span>{number} /</span>{children}</div>
+  return <div className={`section-label ${light ? 'section-label-light' : ''}`}><span className="mission-code"><small>MISIÓN</small>{number}</span><span className="section-label-text">{children}</span></div>
 }
 
 export function ExternalAnchor({ children, className = '', ...props }: ComponentProps<'a'>) {

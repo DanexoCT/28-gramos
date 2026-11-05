@@ -14,6 +14,8 @@ test('contenido, recursos, fechas y composición responsive', async ({ page }, t
   await page.evaluate(() => document.fonts.ready)
   await expect(page).toHaveTitle(/28 Gramos Records/)
   await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1)
+  await expect(page.locator('.wanted-hud .stars svg')).toHaveCount(5)
+  await expect(page.locator('.zone-radar')).toBeVisible()
   await expect(page.getByRole('heading', { name: /La próxima fecha/ })).toBeVisible()
   await expect(page.getByText('REALIZADO', { exact: true })).toHaveCount(1)
   await expect(page.getByRole('link', { name: /Apple Music/ })).toHaveAttribute('href', 'https://music.apple.com/us/album/5-estrellas/6810184416')
@@ -41,7 +43,7 @@ test('contenido, recursos, fechas y composición responsive', async ({ page }, t
   await page.screenshot({ path: testInfo.outputPath('landing.png'), fullPage: true, animations: 'disabled' })
 })
 
-test('movimiento automático, cursor y pausa respetan el dispositivo y las preferencias', async ({ page, isMobile }, testInfo) => {
+test('movimiento automático, cursor nativo y pausa respetan las preferencias', async ({ page }, testInfo) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   await page.emulateMedia({ reducedMotion: 'no-preference' })
@@ -54,15 +56,11 @@ test('movimiento automático, cursor y pausa respetan el dispositivo y las prefe
   await expect.poll(() => photograph.evaluate(element => getComputedStyle(element).transform)).not.toBe(initialTransform)
   await expect(page.locator('.identity-strip-track')).toHaveCSS('animation-name', 'identity-travel')
 
-  if (isMobile) {
-    await expect(page.locator('.cursor-accent')).toHaveCount(0)
-  } else {
-    await page.mouse.move(500, 280)
-    await expect(page.locator('.cursor-accent')).toHaveCSS('opacity', '1')
-    const initialPosition = await page.locator('.cursor-accent').evaluate(element => getComputedStyle(element).transform)
-    await page.mouse.move(650, 330)
-    await expect.poll(() => page.locator('.cursor-accent').evaluate(element => getComputedStyle(element).transform)).not.toBe(initialPosition)
-  }
+  await page.mouse.move(500, 280)
+  await page.mouse.move(650, 330)
+  await expect(page.locator('.cursor-accent')).toHaveCount(0)
+  await expect(page.locator('body')).toHaveCSS('cursor', 'auto')
+  await expect(page.locator('.radar-sweep')).toHaveCSS('animation-name', 'radar-scan')
 
   await expect(page.locator('.hero-line-text').first()).toHaveCSS('opacity', '1')
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
@@ -72,6 +70,7 @@ test('movimiento automático, cursor y pausa respetan el dispositivo y las prefe
   await expect(pause).toHaveAttribute('aria-pressed', 'true')
   await expect(photograph).toHaveCSS('animation-name', 'none')
   await expect(page.locator('.identity-strip-track')).toHaveCSS('animation-name', 'none')
+  await expect(page.locator('.radar-sweep')).toHaveCSS('animation-name', 'none')
   await expect(page.locator('.cursor-accent')).toHaveCount(0)
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
   await pause.click()

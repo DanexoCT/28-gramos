@@ -36,7 +36,7 @@ export function Events() {
               <div className="poster-pink" aria-hidden="true"><img src={assetUrl('images/festival.webp')} alt="" width="1071" height="1600" loading="lazy" /></div>
               {event.image && <img className="poster-main" src={event.image} alt="Flyer de Jaredsson en 28Fest, Halloween Edition, 17 de octubre de 2026" width="1209" height="1209" loading="lazy" />}
               <span className="poster-expand"><Plus size={20} aria-hidden="true" /><span>VER FLYER</span></span>
-              <span className="archive-sticker">YA HICIMOS<br /><strong>RUIDO.</strong></span>
+              <span className="archive-sticker mission-complete">MISIÓN<br /><strong>CUMPLIDA.</strong></span>
             </button>
             <div className="archive-caption"><div><h3>{event.name} / {event.edition}</h3><p><MapPin size={13} aria-hidden="true" />{event.venue} · Zapopan</p></div><span className="status-badge">REALIZADO</span></div>
           </article>)}

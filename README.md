@@ -12,7 +12,8 @@ Landing editorial de 28 Gramos Records: música, 28Fest, colectivo, streetwear y
 - Sección editorial de prendas y contacto mediante el Instagram oficial.
 - Tipografías locales, imágenes WebP, metadatos sociales y animaciones que respetan movimiento reducido.
 - Entradas escalonadas, fotografía con movimiento lento, franja tipográfica continua, reflejos y luces de escenario automáticas en móvil.
-- Estela de cursor únicamente con ratón; botón de pausa y suspensión de efectos fuera de pantalla o con la pestaña oculta.
+- Detalles de interfaz inspirados en GTA: cinco estrellas, rótulos de misión, radar de distrito dibujado en SVG y acentos dorados. El mapa es gráfico y no utiliza geolocalización.
+- Cursor nativo, botón de pausa y suspensión de efectos fuera de pantalla o con la pestaña oculta.
 
 No requiere claves de API, cuentas adicionales ni backend.
 
@@ -85,7 +86,7 @@ npm run build
 npm run test:e2e
 ```
 
-La suite ejecuta doce pruebas en cuatro tamaños: 1440, 768, 390 y 320 px. Comprueba navegación, tracklist, diálogos, recursos, Spotify, fechas, animaciones automáticas, cursor según el dispositivo, pausa, movimiento reducido, recortes, desbordamiento y reglas de accesibilidad WCAG mediante axe.
+La suite ejecuta doce pruebas en cuatro tamaños: 1440, 768, 390 y 320 px. Comprueba navegación, tracklist, diálogos, recursos, Spotify, fechas, animaciones automáticas, cursor nativo, HUD, radar, pausa, movimiento reducido, recortes, desbordamiento y reglas de accesibilidad WCAG mediante axe.
 
 Las pruebas usan Microsoft Edge si está instalado en Windows. En otros entornos, instala Chromium antes de ejecutarlas:
 
