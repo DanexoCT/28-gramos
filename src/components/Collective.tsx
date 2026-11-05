@@ -8,7 +8,7 @@ import { assetUrl } from '../lib/assets'
 export function Collective() {
   const [selected, setSelected] = useState<GalleryImage | null>(null)
   return <>
-    <section id="colectivo" className="collective-section section-space page-shell" aria-labelledby="collective-title">
+    <section id="colectivo" className="collective-section section-space page-shell" data-ambient aria-labelledby="collective-title">
       <Reveal><div className="section-topline"><SectionLabel number="03">EL COLECTIVO</SectionLabel><span className="micro-copy">LOS DE SIEMPRE. LOS 28.</span></div>
         <div className="collective-heading"><h2 id="collective-title" className="section-title">LA FAMILIA<br /><span className="outline-text">SE RECONOCE.</span></h2><div className="collective-intro"><Stars /><p>Un mismo sonido, distintas voces.<br />La música nos junta. La identidad nos conecta.</p><span className="handwritten">Esto se vive desde adentro.</span></div></div>
       </Reveal>
@@ -17,7 +17,7 @@ export function Collective() {
         <div className="collective-seal" aria-hidden="true"><span>UNA MISMA</span><strong>FAMILIA</strong><Stars /></div>
       </div>
     </section>
-    <section className="merch-section" aria-labelledby="merch-title">
+    <section className="merch-section" data-ambient aria-labelledby="merch-title">
       <div className="merch-photo"><img src={assetUrl('images/portrait-1220.webp')} alt="Detalle de la sudadera negra con el logotipo original de 28 Gramos" width="1220" height="1214" loading="lazy" /></div>
       <Reveal className="merch-copy"><SectionLabel number="04" light>CULTURA QUE SE LLEVA PUESTA</SectionLabel><h2 id="merch-title">EL MISMO<br />CÓDIGO.<span>FUERA DEL ESTUDIO.</span></h2><p>Sudaderas, gorras y una identidad compartida.<br />Las prendas de los 28, desde adentro.</p><ExternalAnchor href={brand.instagram} className="button button-dark">Consultar disponibilidad<ArrowUpRight size={18} /></ExternalAnchor><span className="merch-small">DIRECTO CON EL COLECTIVO, EN INSTAGRAM.</span></Reveal>
     </section>

@@ -67,6 +67,7 @@ export const featuredRelease: Release = {
   releasedOn: '2026-10-01',
   source: 'https://music.apple.com/us/album/5-estrellas/6810184416',
   platforms: [
+    { label: 'Spotify', url: 'https://open.spotify.com/album/4CTfRPq2XHiAT4AgysxKav' },
     { label: 'Apple Music', url: 'https://music.apple.com/us/album/5-estrellas/6810184416' },
     { label: 'Amazon Music', url: 'https://music.amazon.co.uk/albums/B0HJ8FF33S' },
   ],

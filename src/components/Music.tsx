@@ -1,10 +1,11 @@
 import { ArrowUpRight, ChevronDown, Disc3, Music2 } from 'lucide-react'
 import { featuredRelease as release, formatEventDate } from '../data/content'
-import { ExternalAnchor, Reveal, SectionLabel, Stars } from './Primitives'
+import { ExternalAnchor, Reveal, SectionLabel, SpotifyIcon, Stars } from './Primitives'
+import { SoundBars } from './VisualEffects'
 
 export function Music() {
-  return <section id="musica" className="music-section section-space page-shell" aria-labelledby="music-title">
-    <Reveal><div className="section-topline"><SectionLabel number="01">EL SONIDO DE LOS 28</SectionLabel><span className="micro-copy">DALE VOLUMEN.</span></div>
+  return <section id="musica" className="music-section section-space page-shell" data-ambient aria-labelledby="music-title">
+    <Reveal><div className="section-topline"><SectionLabel number="01">EL SONIDO DE LOS 28</SectionLabel><span className="music-topline-note"><SoundBars /><span className="micro-copy">DALE VOLUMEN.</span></span></div>
       <h2 id="music-title" className="section-title">SONIDO <span className="outline-text">PROPIO.</span></h2>
     </Reveal>
     <div className="release-grid">
@@ -16,7 +17,7 @@ export function Music() {
         <p className="artist-name">{release.artist.name}</p>
         <p className="release-description">{release.tracks.length} tracks. Una misma frecuencia.<br />El universo de {release.artist.name}, de principio a fin.</p>
         <div className="release-metadata"><span>{release.tracks.length} TRACKS</span><span>{formatEventDate(release.releasedOn).toUpperCase()}</span></div>
-        <div className="platform-links">{release.platforms.map((platform, index) => <ExternalAnchor key={platform.label} href={platform.url} className={`button ${index === 0 ? 'button-light' : 'button-outline'}`}><Music2 size={17} />{platform.label}<ArrowUpRight size={17} /></ExternalAnchor>)}</div>
+        <div className="platform-links">{release.platforms.map(platform => <ExternalAnchor key={platform.label} href={platform.url} className={`button ${platform.label === 'Spotify' ? 'button-spotify' : 'button-outline'}`}>{platform.label === 'Spotify' ? <SpotifyIcon size={18} /> : <Music2 size={17} />}{platform.label}<ArrowUpRight size={17} /></ExternalAnchor>)}</div>
         <details className="tracklist"><summary>EXPLORAR LOS {release.tracks.length} TRACKS<ChevronDown size={17} aria-hidden="true" /></summary><ol>{release.tracks.map(track => <li key={track.title}><span>{track.title}{track.featuring && <small>FT. {track.featuring}</small>}</span></li>)}</ol></details>
         <p className="release-credit">℗ 2026 28GramosRecords & VastGrooveRecords</p>
       </Reveal>

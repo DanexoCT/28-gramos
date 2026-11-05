@@ -17,6 +17,7 @@ test('contenido, recursos, fechas y composición responsive', async ({ page }, t
   await expect(page.getByRole('heading', { name: /La próxima fecha/ })).toBeVisible()
   await expect(page.getByText('REALIZADO', { exact: true })).toHaveCount(1)
   await expect(page.getByRole('link', { name: /Apple Music/ })).toHaveAttribute('href', 'https://music.apple.com/us/album/5-estrellas/6810184416')
+  await expect(page.getByRole('link', { name: /^Spotify/ })).toHaveAttribute('href', 'https://open.spotify.com/album/4CTfRPq2XHiAT4AgysxKav')
 
   for (const id of ['inicio', 'musica', 'eventos', 'colectivo', 'contacto']) {
     await page.locator(`#${id}`).scrollIntoViewIfNeeded()
@@ -38,6 +39,55 @@ test('contenido, recursos, fechas y composición responsive', async ({ page }, t
   expect(accessibility.violations.map(violation => ({ id: violation.id, nodes: violation.nodes.map(node => node.target) }))).toEqual([])
   await page.locator('#inicio').scrollIntoViewIfNeeded()
   await page.screenshot({ path: testInfo.outputPath('landing.png'), fullPage: true, animations: 'disabled' })
+})
+
+test('movimiento automático, cursor y pausa respetan el dispositivo y las preferencias', async ({ page, isMobile }, testInfo) => {
+  const errors: string[] = []
+  page.on('pageerror', error => errors.push(error.message))
+  await page.emulateMedia({ reducedMotion: 'no-preference' })
+  await page.goto('./')
+  await page.evaluate(() => document.fonts.ready)
+  await expect(page.locator('.site-experience')).toHaveAttribute('data-motion', 'on')
+  const photograph = page.locator('.hero-photo img')
+  await expect(photograph).toHaveCSS('animation-name', 'photograph-drift')
+  const initialTransform = await photograph.evaluate(element => getComputedStyle(element).transform)
+  await expect.poll(() => photograph.evaluate(element => getComputedStyle(element).transform)).not.toBe(initialTransform)
+  await expect(page.locator('.identity-strip-track')).toHaveCSS('animation-name', 'identity-travel')
+
+  if (isMobile) {
+    await expect(page.locator('.cursor-accent')).toHaveCount(0)
+  } else {
+    await page.mouse.move(500, 280)
+    await expect(page.locator('.cursor-accent')).toHaveCSS('opacity', '1')
+    const initialPosition = await page.locator('.cursor-accent').evaluate(element => getComputedStyle(element).transform)
+    await page.mouse.move(650, 330)
+    await expect.poll(() => page.locator('.cursor-accent').evaluate(element => getComputedStyle(element).transform)).not.toBe(initialPosition)
+  }
+
+  await expect(page.locator('.hero-line-text').first()).toHaveCSS('opacity', '1')
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+  await page.screenshot({ path: testInfo.outputPath('motion-hero.png'), animations: 'allow' })
+  const pause = page.getByRole('button', { name: 'Pausar animaciones' })
+  await pause.click()
+  await expect(pause).toHaveAttribute('aria-pressed', 'true')
+  await expect(photograph).toHaveCSS('animation-name', 'none')
+  await expect(page.locator('.identity-strip-track')).toHaveCSS('animation-name', 'none')
+  await expect(page.locator('.cursor-accent')).toHaveCount(0)
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+  await pause.click()
+  await expect(photograph).toHaveCSS('animation-name', 'photograph-drift')
+
+  await page.locator('#eventos').scrollIntoViewIfNeeded()
+  await expect(page.locator('.stage-beam-one')).toHaveCSS('animation-play-state', 'running')
+  await expect(photograph).toHaveCSS('animation-play-state', 'paused')
+  await expect(page.locator('.event-copy')).toHaveCSS('opacity', '1')
+  await expect(page.locator('.event-archive')).toHaveCSS('opacity', '1')
+  await page.screenshot({ path: testInfo.outputPath('motion-events.png'), animations: 'allow' })
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await expect(page.locator('.site-experience')).toHaveAttribute('data-motion', 'off')
+  await expect(page.locator('.stage-beam-one')).toHaveCSS('animation-name', 'none')
+  await expect(page.locator('.cursor-accent')).toHaveCount(0)
+  expect(errors).toEqual([])
 })
 
 test('menú, tracklist y ampliación de imágenes funcionan con teclado', async ({ page }, testInfo) => {

@@ -4,6 +4,7 @@ import { brand, events, formatEventDate, getEventStatus, type LabelEvent } from 
 import { ExternalAnchor, Reveal, SectionLabel, Stars } from './Primitives'
 import { Modal } from './Modal'
 import { assetUrl } from '../lib/assets'
+import { SceneAtmosphere } from './VisualEffects'
 
 export function Events() {
   const [now, setNow] = useState(() => new Date())
@@ -15,7 +16,8 @@ export function Events() {
   const next = events.find(event => getEventStatus(event, now) === 'próximo')
   const archive = events.filter(event => getEventStatus(event, now) === 'realizado')
 
-  return <section id="eventos" className="events-section section-space" aria-labelledby="events-title">
+  return <section id="eventos" className="events-section section-space" data-ambient aria-labelledby="events-title">
+    <SceneAtmosphere festival />
     <div className="page-shell">
       <Reveal><div className="section-topline"><SectionLabel number="02">CUANDO CAE LA NOCHE</SectionLabel><Stars /></div></Reveal>
       <div className="event-layout">

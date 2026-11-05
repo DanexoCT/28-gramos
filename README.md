@@ -6,10 +6,13 @@ Landing editorial de 28 Gramos Records: música, 28Fest, colectivo, streetwear y
 
 - Hero fotográfico y navegación responsive con menú móvil.
 - Lanzamiento destacado con portada oficial, enlaces de escucha y tracklist desplegable.
+- Spotify como primera opción de escucha, junto con Apple Music y Amazon Music.
 - Archivo de 28Fest y estado de los eventos calculado según la fecha de Ciudad de México.
 - Galería con ampliación de imágenes, cierre con Escape y restauración del foco.
 - Sección editorial de prendas y contacto mediante el Instagram oficial.
 - Tipografías locales, imágenes WebP, metadatos sociales y animaciones que respetan movimiento reducido.
+- Entradas escalonadas, fotografía con movimiento lento, franja tipográfica continua, reflejos y luces de escenario automáticas en móvil.
+- Estela de cursor únicamente con ratón; botón de pausa y suspensión de efectos fuera de pantalla o con la pestaña oculta.
 
 No requiere claves de API, cuentas adicionales ni backend.
 
@@ -53,6 +56,7 @@ Edita `src/data/content.ts` para cambiar enlaces, artistas, lanzamientos, fotogr
 
 - Instagram oficial: https://www.instagram.com/28gramosrecords/
 - Música y portada verificadas: https://music.apple.com/us/album/5-estrellas/6810184416
+- Spotify: https://open.spotify.com/album/4CTfRPq2XHiAT4AgysxKav (verificado desde https://distrokid.com/hyperfollow/orlandodobleo/5-estrellas).
 - Enlace alternativo: https://music.amazon.co.uk/albums/B0HJ8FF33S
 - La edición Halloween de 28Fest corresponde al 17 de octubre de 2026 y figura como archivo. Fecha, lugar y fotografías proceden de las referencias facilitadas.
 
@@ -81,7 +85,7 @@ npm run build
 npm run test:e2e
 ```
 
-La suite ejecuta ocho pruebas en cuatro tamaños: 1440, 768, 390 y 320 px. Comprueba navegación, tracklist, diálogos, recursos, fechas, movimiento reducido, recortes, desbordamiento y reglas de accesibilidad WCAG mediante axe.
+La suite ejecuta doce pruebas en cuatro tamaños: 1440, 768, 390 y 320 px. Comprueba navegación, tracklist, diálogos, recursos, Spotify, fechas, animaciones automáticas, cursor según el dispositivo, pausa, movimiento reducido, recortes, desbordamiento y reglas de accesibilidad WCAG mediante axe.
 
 Las pruebas usan Microsoft Edge si está instalado en Windows. En otros entornos, instala Chromium antes de ejecutarlas:
 

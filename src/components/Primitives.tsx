@@ -1,6 +1,11 @@
-import { motion, useReducedMotion } from 'motion/react'
+import { motion } from 'motion/react'
 import type { ComponentProps, ReactNode } from 'react'
 import { ArrowUpRight } from 'lucide-react'
+import { useVisualEffects } from './VisualEffects'
+
+export function SpotifyIcon({ size = 20 }: { size?: number }) {
+  return <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.59 14.42a.63.63 0 0 1-.87.22c-2.39-1.46-5.4-1.79-8.95-.98a.63.63 0 1 1-.28-1.23c3.89-.89 7.22-.51 9.88 1.12.3.18.4.57.22.87Zm1.23-2.75a.79.79 0 0 1-1.08.26c-2.73-1.68-6.89-2.17-10.11-1.19a.79.79 0 1 1-.46-1.51c3.68-1.12 8.28-.57 11.39 1.36.37.23.49.71.26 1.08Zm.11-2.86C14.65 8.87 9.25 8.69 6.12 9.64a.95.95 0 1 1-.55-1.82c3.59-1.09 9.55-.88 13.33 1.36a.95.95 0 0 1-.97 1.63Z" /></svg>
+}
 
 export function InstagramIcon({ size = 20 }: { size?: number }) {
   return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r=".9" fill="currentColor" stroke="none" /></svg>
@@ -13,8 +18,8 @@ export function Stars({ className = '' }: { className?: string }) {
 }
 
 export function Reveal({ children, className = '' }: { children: ReactNode; className?: string }) {
-  const reduced = useReducedMotion()
-  return <motion.div className={className} initial={reduced ? false : { opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ duration: 0.55, ease: [0.2, 0.7, 0.2, 1] }}>{children}</motion.div>
+  const { enabled } = useVisualEffects()
+  return <motion.div className={`reveal-element ${className}`} initial={enabled ? { opacity: 0, y: 32 } : false} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ duration: .8, ease: [0.16, 1, 0.3, 1] }}>{children}</motion.div>
 }
 
 export function SectionLabel({ number, children, light = false }: { number: string; children: ReactNode; light?: boolean }) {
