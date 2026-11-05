@@ -22,7 +22,7 @@ export function Events() {
       <Reveal><div className="section-topline"><SectionLabel number="02">LA NOCHE SE PRENDE</SectionLabel><Stars /></div></Reveal>
       <div className="event-layout">
         <Reveal className="event-copy">
-          <div className="event-wordmark" aria-hidden="true">28<span>FEST</span><span className="wordmark-underline" /></div>
+          <div className="event-wordmark" aria-hidden="true">28<span>Fest</span><span className="wordmark-underline" /></div>
           <span className="event-pill">{next ? 'PRÓXIMA FECHA' : 'LA NOCHE NO SE ACABA'}</span>
           <h2 id="events-title">{next ? <>{next.name}<br /><span>{next.edition}</span></> : <>La próxima fecha<br />se anuncia <span>aquí.</span></>}</h2>
           {next && next.date ? <p className="event-description">{formatEventDate(next.date)} · {next.venue}</p> : <p className="event-description">Perreo abajo. El bajo arriba.<br />La próxima se prende con los 28.</p>}

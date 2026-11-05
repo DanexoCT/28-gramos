@@ -10,9 +10,10 @@ Landing editorial de 28 Gramos Records: música, 28Fest, colectivo, streetwear y
 - Archivo de 28Fest y estado de los eventos calculado según la fecha de Ciudad de México.
 - Galería con ampliación de imágenes, cierre con Escape y restauración del foco.
 - Sección editorial de prendas y contacto mediante el Instagram oficial.
-- Tipografías locales, imágenes WebP, metadatos sociales y animaciones que respetan movimiento reducido.
+- Tres familias tipográficas locales: Barlow Condensed, DM Sans y UnifrakturCook, gótica y próxima al estilo del logotipo. Imágenes WebP, metadatos sociales y animaciones que respetan movimiento reducido.
 - Entradas escalonadas, fotografía con movimiento lento, franja tipográfica continua, reflejos y luces de escenario automáticas en móvil.
-- Detalles de interfaz inspirados en GTA: cinco estrellas, rótulos de misión, radar de distrito dibujado en SVG y acentos dorados. El mapa es gráfico y no utiliza geolocalización.
+- Detalles de interfaz inspirados en GTA: cinco estrellas, rótulos de misión y radar de distrito dibujado en SVG, con la paleta negra, blanca, roja y fucsia de 28 Gramos. El mapa es gráfico y no utiliza geolocalización.
+- Hojas de cannabis en SVG como pequeños ornamentos y marca de agua editorial.
 - Cursor nativo, botón de pausa y suspensión de efectos fuera de pantalla o con la pestaña oculta.
 
 No requiere claves de API, cuentas adicionales ni backend.
