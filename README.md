@@ -20,8 +20,8 @@ Entorno verificado: Node.js 24.22.0 y npm 11.19.1. Las versiones de las dependen
 ## Desarrollo
 
 ```sh
-git clone https://github.com/DanexoCT/28-gramos-landingpage.git
-cd 28-gramos-landingpage
+git clone https://github.com/DanexoCT/28-gramos.git
+cd 28-gramos
 npm ci
 npm run dev
 ```
