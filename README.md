@@ -77,6 +77,8 @@ Sitio publicado: **https://danexoct.github.io/28-gramos/**.
 
 GitHub Pages usa **GitHub Actions** como origen de publicación. El flujo `.github/workflows/deploy-pages.yml` instala las dependencias, comprueba TypeScript, compila Vite y publica exclusivamente `dist/` en cada push a `main`. También puede ejecutarse manualmente desde Actions.
 
+La compilación y el despliegue se ejecutan en trabajos separados. El artefacto utiliza un nombre único por ejecución e intento; el despliegue recibe el nombre de la compilación que terminó correctamente, también al reintentar solo la publicación.
+
 `base: '/28-gramos/'` en `vite.config.ts` y `src/lib/assets.ts` mantienen JavaScript, CSS e imágenes dentro de la ruta del repositorio. El servidor de desarrollo y la vista previa también sirven la landing en `/28-gramos/`.
 
 Para cambiar de dominio o de ruta, actualiza `base`, la URL canónica y los metadatos sociales de `index.html`. La próxima fecha, enlaces de entradas y catálogo se añaden únicamente cuando estén confirmados.
