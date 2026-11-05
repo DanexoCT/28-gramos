@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { brand, navigation } from '../data/content'
+import { assetUrl } from '../lib/assets'
 import { ExternalAnchor, InstagramIcon as Instagram } from './Primitives'
 
 export function Header() {
@@ -30,7 +31,7 @@ export function Header() {
 
   return <header className="site-header">
     <div className="header-inner page-shell flex items-center justify-between">
-      <a className="brand-logo" href="#inicio" aria-label="28 Gramos Records — Inicio" onClick={() => setOpen(false)}><img src="/images/logo.webp" alt="28 Gramos Records" width="682" height="486" /></a>
+      <a className="brand-logo" href="#inicio" aria-label="28 Gramos Records — Inicio" onClick={() => setOpen(false)}><img src={assetUrl('images/logo.webp')} alt="28 Gramos Records" width="682" height="486" /></a>
       <nav ref={nav} id="main-navigation" aria-label="Navegación principal" className={`main-navigation ${open ? 'is-open' : ''}`}>
         {navigation.map(item => <a key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}</a>)}
         <ExternalAnchor href={brand.instagram} className="mobile-instagram"><Instagram size={18} />Instagram<ArrowUpRight size={17} /></ExternalAnchor>

@@ -8,7 +8,9 @@ test('contenido, recursos, fechas y composición responsive', async ({ page }, t
   const failedRequests: string[] = []
   page.on('response', response => { if (response.status() >= 400) failedRequests.push(`${response.status()} ${response.url()}`) })
   await page.clock.install({ time: new Date('2026-11-04T18:00:00Z') })
-  await page.goto('/')
+  await page.goto('./')
+  await expect(page).toHaveURL(/\/28-gramos\/$/)
+  await expect(page.locator('script[type="module"][src]')).toHaveAttribute('src', /^\/28-gramos\/assets\/.+\.js$/)
   await page.evaluate(() => document.fonts.ready)
   await expect(page).toHaveTitle(/28 Gramos Records/)
   await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1)
@@ -27,6 +29,7 @@ test('contenido, recursos, fechas y composición responsive', async ({ page }, t
   expect(clippedContent).toEqual([])
   await page.locator('footer').scrollIntoViewIfNeeded()
   await expect.poll(() => page.locator('img').evaluateAll(images => images.every(image => image.complete && image.naturalWidth > 0))).toBe(true)
+  expect(await page.locator('img').evaluateAll(images => images.every(image => new URL(image.currentSrc).pathname.startsWith('/28-gramos/images/')))).toBe(true)
   const missingTargets = await page.locator('a[href^="#"]').evaluateAll(links => links.filter(link => !document.getElementById(link.getAttribute('href')!.slice(1))).map(link => link.getAttribute('href')))
   expect(missingTargets).toEqual([])
   expect(errors).toEqual([])
@@ -38,7 +41,7 @@ test('contenido, recursos, fechas y composición responsive', async ({ page }, t
 })
 
 test('menú, tracklist y ampliación de imágenes funcionan con teclado', async ({ page }, testInfo) => {
-  await page.goto('/')
+  await page.goto('./')
   const menu = page.getByRole('button', { name: /^(Abrir|Cerrar) menú$/ })
   if ((page.viewportSize()?.width ?? 1440) < 768) {
     await menu.click()

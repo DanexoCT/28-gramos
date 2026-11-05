@@ -1,9 +1,10 @@
 import { ArrowDown, ArrowRight } from 'lucide-react'
 import { Stars } from './Primitives'
+import { assetUrl } from '../lib/assets'
 
 export function Hero() {
   return <section id="inicio" className="hero relative" aria-labelledby="hero-title">
-    <div className="hero-photo" aria-hidden="true"><img src="/images/collective-1220.webp" srcSet="/images/collective-700.webp 700w, /images/collective-1220.webp 1220w" sizes="(max-width: 767px) 100vw, 70vw" alt="" width="1220" height="1224" fetchPriority="high" /></div>
+    <div className="hero-photo" aria-hidden="true"><img src={assetUrl('images/collective-1220.webp')} srcSet={`${assetUrl('images/collective-700.webp')} 700w, ${assetUrl('images/collective-1220.webp')} 1220w`} sizes="(max-width: 767px) 100vw, 70vw" alt="" width="1220" height="1224" fetchPriority="high" /></div>
     <div className="hero-shade" aria-hidden="true" />
     <div className="hero-content page-shell relative">
       <div className="hero-eyebrow"><span className="live-dot" />28 GRAMOS RECORDS<span className="eyebrow-divider">/</span>MÚSICA & CULTURA</div>

@@ -64,9 +64,13 @@ node scripts/prepare-assets.mjs "ruta/al/directorio/de/referencias"
 
 ## Publicación
 
-`npm run build` genera `dist/`, compatible con hosting estático. Publica el contenido de esa carpeta. Para subdirectorios, configura `base` en `vite.config.ts`.
+Sitio publicado: **https://danexoct.github.io/28-gramos/**.
 
-No faltan datos para servir la landing como está. Al elegir dominio, añade la URL canónica y convierte `og:image` y `twitter:image` de `index.html` en URLs absolutas de ese dominio. La próxima fecha, enlaces de entradas y catálogo se añaden únicamente cuando estén confirmados.
+GitHub Pages usa **GitHub Actions** como origen de publicación. El flujo `.github/workflows/deploy-pages.yml` instala las dependencias, comprueba TypeScript, compila Vite y publica exclusivamente `dist/` en cada push a `main`. También puede ejecutarse manualmente desde Actions.
+
+`base: '/28-gramos/'` en `vite.config.ts` y `src/lib/assets.ts` mantienen JavaScript, CSS e imágenes dentro de la ruta del repositorio. El servidor de desarrollo y la vista previa también sirven la landing en `/28-gramos/`.
+
+Para cambiar de dominio o de ruta, actualiza `base`, la URL canónica y los metadatos sociales de `index.html`. La próxima fecha, enlaces de entradas y catálogo se añaden únicamente cuando estén confirmados.
 
 ## Verificación
 
@@ -86,3 +90,5 @@ npx playwright install chromium
 ```
 
 Los resultados y capturas se guardan en `test-results/` y están excluidos de Git, al igual que `node_modules/`, `dist/`, archivos de entorno y otros archivos generados.
+
+Para verificar la versión publicada con la misma suite, define `PLAYWRIGHT_BASE_URL=https://danexoct.github.io/28-gramos/` antes de ejecutar `npm run test:e2e`. Las pruebas comprueban que se entregue JavaScript compilado y que las imágenes carguen bajo `/28-gramos/`.

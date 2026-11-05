@@ -1,3 +1,5 @@
+import { assetUrl } from '../lib/assets'
+
 export interface Artist {
   id: string
   name: string
@@ -61,7 +63,7 @@ export const featuredRelease: Release = {
   id: '5-estrellas',
   title: '5 ESTRELLAS',
   artist: { id: 'orlando-doble-o', name: 'Orlando Doble O' },
-  artwork: '/images/5-estrellas.webp',
+  artwork: assetUrl('images/5-estrellas.webp'),
   releasedOn: '2026-10-01',
   source: 'https://music.apple.com/us/album/5-estrellas/6810184416',
   platforms: [
@@ -104,7 +106,7 @@ export const events: LabelEvent[] = [
     date: '2026-10-17',
     venue: 'Terraza Diamante',
     address: 'Colima 105, El Mante, Zapopan',
-    image: '/images/jaredsson.webp',
+    image: assetUrl('images/jaredsson.webp'),
   },
 ]
 
@@ -125,12 +127,12 @@ export function formatEventDate(date: string): string {
 
 export const gallery: GalleryImage[] = [
   {
-    src: '/images/collective-1220.webp',
+    src: assetUrl('images/collective-1220.webp'),
     alt: 'El colectivo reunido con sudaderas y gorras de 28 Gramos Records',
     caption: 'LOS 28, DESDE ADENTRO.',
   },
   {
-    src: '/images/portrait-1220.webp',
+    src: assetUrl('images/portrait-1220.webp'),
     alt: 'Retrato con gorra negra y sudadera del logotipo gótico de 28 Gramos',
     caption: 'LA IDENTIDAD SE LLEVA PUESTA.',
   },

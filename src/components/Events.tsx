@@ -3,6 +3,7 @@ import { ArrowUpRight, MapPin, Plus } from 'lucide-react'
 import { brand, events, formatEventDate, getEventStatus, type LabelEvent } from '../data/content'
 import { ExternalAnchor, Reveal, SectionLabel, Stars } from './Primitives'
 import { Modal } from './Modal'
+import { assetUrl } from '../lib/assets'
 
 export function Events() {
   const [now, setNow] = useState(() => new Date())
@@ -30,7 +31,7 @@ export function Events() {
           {archive.map(event => <article key={event.id}>
             <div className="archive-heading"><span>DEL ARCHIVO</span><span>{event.date ? formatEventDate(event.date).toUpperCase() : ''}</span></div>
             <button className="poster-button" onClick={() => setSelected(event)} aria-label={`Ver flyer de ${event.name}, ${event.edition}, evento realizado`}>
-              <div className="poster-pink" aria-hidden="true"><img src="/images/festival.webp" alt="" width="1071" height="1600" loading="lazy" /></div>
+              <div className="poster-pink" aria-hidden="true"><img src={assetUrl('images/festival.webp')} alt="" width="1071" height="1600" loading="lazy" /></div>
               {event.image && <img className="poster-main" src={event.image} alt="Flyer de Jaredsson en 28Fest, Halloween Edition, 17 de octubre de 2026" width="1209" height="1209" loading="lazy" />}
               <span className="poster-expand"><Plus size={20} aria-hidden="true" /><span>VER FLYER</span></span>
               <span className="archive-sticker">YA HICIMOS<br /><strong>RUIDO.</strong></span>
