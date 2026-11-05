@@ -20,6 +20,8 @@ test('contenido, recursos, fechas y composición responsive', async ({ page }, t
   await expect(page.getByText('REALIZADO', { exact: true })).toHaveCount(1)
   await expect(page.getByRole('link', { name: /Apple Music/ })).toHaveAttribute('href', 'https://music.apple.com/us/album/5-estrellas/6810184416')
   await expect(page.getByRole('link', { name: /^Spotify/ })).toHaveAttribute('href', 'https://open.spotify.com/album/4CTfRPq2XHiAT4AgysxKav')
+  await expect(page.getByRole('link', { name: /Apple Music/ }).locator('svg.platform-brand-icon')).toHaveCount(1)
+  await expect(page.getByRole('link', { name: /Amazon Music/ }).locator('svg.platform-brand-icon')).toHaveCount(1)
 
   for (const id of ['inicio', 'musica', 'eventos', 'colectivo', 'contacto']) {
     await page.locator(`#${id}`).scrollIntoViewIfNeeded()
@@ -43,7 +45,7 @@ test('contenido, recursos, fechas y composición responsive', async ({ page }, t
   await page.screenshot({ path: testInfo.outputPath('landing.png'), fullPage: true, animations: 'disabled' })
 })
 
-test('movimiento automático, cursor nativo y pausa respetan las preferencias', async ({ page }, testInfo) => {
+test('movimiento automático, cursor nativo y brillo suave respetan las preferencias', async ({ page, isMobile }, testInfo) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   await page.emulateMedia({ reducedMotion: 'no-preference' })
@@ -60,6 +62,16 @@ test('movimiento automático, cursor nativo y pausa respetan las preferencias', 
   await page.mouse.move(650, 330)
   await expect(page.locator('.cursor-accent')).toHaveCount(0)
   await expect(page.locator('body')).toHaveCSS('cursor', 'auto')
+  if (isMobile) {
+    await expect(page.locator('.cursor-glow')).toHaveCount(0)
+  } else {
+    const light = page.locator('.cursor-glow')
+    await expect(light).toHaveCSS('opacity', '1')
+    await expect.poll(async () => {
+      const bounds = await light.boundingBox()
+      return bounds ? Math.abs(bounds.x + bounds.width / 2 - 650) + Math.abs(bounds.y + bounds.height / 2 - 330) : Infinity
+    }).toBeLessThan(1)
+  }
   await expect(page.locator('.radar-sweep')).toHaveCSS('animation-name', 'radar-scan')
 
   await expect(page.locator('.hero-line-text').first()).toHaveCSS('opacity', '1')
@@ -72,6 +84,7 @@ test('movimiento automático, cursor nativo y pausa respetan las preferencias', 
   await expect(page.locator('.identity-strip-track')).toHaveCSS('animation-name', 'none')
   await expect(page.locator('.radar-sweep')).toHaveCSS('animation-name', 'none')
   await expect(page.locator('.cursor-accent')).toHaveCount(0)
+  await expect(page.locator('.cursor-glow')).toHaveCount(0)
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
   await pause.click()
   await expect(photograph).toHaveCSS('animation-name', 'photograph-drift')
@@ -86,6 +99,7 @@ test('movimiento automático, cursor nativo y pausa respetan las preferencias', 
   await expect(page.locator('.site-experience')).toHaveAttribute('data-motion', 'off')
   await expect(page.locator('.stage-beam-one')).toHaveCSS('animation-name', 'none')
   await expect(page.locator('.cursor-accent')).toHaveCount(0)
+  await expect(page.locator('.cursor-glow')).toHaveCount(0)
   expect(errors).toEqual([])
 })
 

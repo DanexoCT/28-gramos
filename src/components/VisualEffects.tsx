@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from 'react'
 import { MotionConfig, motion, useScroll } from 'motion/react'
+import { CursorGlow } from './CursorGlow'
 
 interface VisualEffectsState {
   enabled: boolean
@@ -52,6 +53,7 @@ export function VisualEffectsProvider({ children }: { children: ReactNode }) {
       <div ref={container} className="site-experience" data-motion={enabled ? 'on' : 'off'}>
         {enabled && <ScrollProgress />}
         {children}
+        {enabled && <CursorGlow />}
       </div>
     </MotionConfig>
   </VisualEffectsContext.Provider>

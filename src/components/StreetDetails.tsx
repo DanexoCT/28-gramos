@@ -4,7 +4,7 @@ export function WantedHud() {
   return <div className="wanted-hud" aria-hidden="true">
     <span className="hud-kicker">28GR / MÁXIMO NIVEL</span>
     <Stars className="wanted-stars" />
-    <strong>5 estrellas</strong>
+    <strong>5 ESTRELLAS</strong>
     <div className="hud-stripes"><span /><span /></div>
   </div>
 }
