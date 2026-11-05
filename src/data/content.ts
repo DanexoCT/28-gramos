@@ -55,7 +55,7 @@ export const navigation = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Música', href: '#musica' },
   { label: 'Eventos', href: '#eventos' },
-  { label: 'El colectivo', href: '#colectivo' },
+  { label: 'La clica', href: '#colectivo' },
   { label: 'Contacto', href: '#contacto' },
 ]
 
@@ -130,11 +130,11 @@ export const gallery: GalleryImage[] = [
   {
     src: assetUrl('images/collective-1220.webp'),
     alt: 'El colectivo reunido con sudaderas y gorras de 28 Gramos Records',
-    caption: 'LOS 28, DESDE ADENTRO.',
+    caption: 'LA CLICA. SIN POSE.',
   },
   {
     src: assetUrl('images/portrait-1220.webp'),
     alt: 'Retrato con gorra negra y sudadera del logotipo gótico de 28 Gramos',
-    caption: 'LA IDENTIDAD SE LLEVA PUESTA.',
+    caption: 'EL CÓDIGO SE PORTA.',
   },
 ]

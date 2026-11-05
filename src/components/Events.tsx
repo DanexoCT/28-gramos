@@ -19,19 +19,19 @@ export function Events() {
   return <section id="eventos" className="events-section section-space" data-ambient aria-labelledby="events-title">
     <SceneAtmosphere festival />
     <div className="page-shell">
-      <Reveal><div className="section-topline"><SectionLabel number="02">CUANDO CAE LA NOCHE</SectionLabel><Stars /></div></Reveal>
+      <Reveal><div className="section-topline"><SectionLabel number="02">LA NOCHE SE PRENDE</SectionLabel><Stars /></div></Reveal>
       <div className="event-layout">
         <Reveal className="event-copy">
           <div className="event-wordmark" aria-hidden="true">28<span>FEST</span><span className="wordmark-underline" /></div>
-          <span className="event-pill">{next ? 'PRÓXIMA FECHA' : 'MÁS NOCHES POR ESCRIBIR'}</span>
+          <span className="event-pill">{next ? 'PRÓXIMA FECHA' : 'LA NOCHE NO SE ACABA'}</span>
           <h2 id="events-title">{next ? <>{next.name}<br /><span>{next.edition}</span></> : <>La próxima fecha<br />se anuncia <span>aquí.</span></>}</h2>
-          {next && next.date ? <p className="event-description">{formatEventDate(next.date)} · {next.venue}</p> : <p className="event-description">La música sale de los audífonos.<br />Nos encontramos frente al escenario.</p>}
-          <ExternalAnchor href={next?.infoUrl ?? brand.instagram} className="button button-pink">{next?.infoUrl ? 'Información del evento' : 'Sigue la próxima fecha'}<ArrowUpRight size={18} /></ExternalAnchor>
+          {next && next.date ? <p className="event-description">{formatEventDate(next.date)} · {next.venue}</p> : <p className="event-description">Perreo abajo. El bajo arriba.<br />La próxima se prende con los 28.</p>}
+          <ExternalAnchor href={next?.infoUrl ?? brand.instagram} className="button button-pink">{next?.infoUrl ? 'Información del evento' : 'Cacha la próxima fecha'}<ArrowUpRight size={18} /></ExternalAnchor>
           <span className="event-handle">{brand.handle}</span>
         </Reveal>
         <Reveal className="event-archive">
           {archive.map(event => <article key={event.id}>
-            <div className="archive-heading"><span>DEL ARCHIVO</span><span>{event.date ? formatEventDate(event.date).toUpperCase() : ''}</span></div>
+            <div className="archive-heading"><span>NOCHES QUE DEJARON MARCA</span><span>{event.date ? formatEventDate(event.date).toUpperCase() : ''}</span></div>
             <button className="poster-button" onClick={() => setSelected(event)} aria-label={`Ver flyer de ${event.name}, ${event.edition}, evento realizado`}>
               <div className="poster-pink" aria-hidden="true"><img src={assetUrl('images/festival.webp')} alt="" width="1071" height="1600" loading="lazy" /></div>
               {event.image && <img className="poster-main" src={event.image} alt="Flyer de Jaredsson en 28Fest, Halloween Edition, 17 de octubre de 2026" width="1209" height="1209" loading="lazy" />}
