@@ -17,4 +17,3 @@ export function AppleMusicIcon({ size = 20 }: { size?: number }) {
 export function AmazonMusicIcon({ size = 20 }: { size?: number }) {
   return <BrandIcon path={amazonMusicPath} size={size} className="platform-brand-icon" />
 }
-
