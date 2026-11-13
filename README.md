@@ -8,6 +8,7 @@ Landing editorial de 28 Gramos Records: música, 28Fest, colectivo, streetwear y
 - El título «LOS 28» utiliza el número del logotipo original vectorizado en SVG, con fondo transparente y tamaño adaptable.
 - Lanzamiento destacado con portada oficial, enlaces de escucha y tracklist desplegable.
 - Spotify como primera opción de escucha, junto con Apple Music y Amazon Music.
+- Perfiles de JaguarG, Orlando Doble O y JAREDSSON con imágenes oficiales, tres temas populares por artista, dos lanzamientos y enlaces directos a las tres plataformas.
 - Archivo de 28Fest y estado de los eventos calculado según la fecha de Ciudad de México.
 - Galería con ampliación de imágenes, cierre con Escape y restauración del foco.
 - Sección editorial de prendas y contacto mediante el Instagram oficial.
@@ -57,6 +58,18 @@ playwright.config.ts    Configuración de los cuatro tamaños de pantalla
 ```
 
 ## Contenido
+
+Los perfiles se editan en `src/data/artists.ts`. Catálogos, créditos y enlaces se comprobaron el 13 de noviembre de 2026. Los temas son una selección de los primeros resultados del reproductor público de cada artista en Spotify, guardada como contenido editorial; no son estadísticas en vivo ni un ranking combinado. No se publican cifras de reproducciones o de oyentes.
+
+Fuentes de los perfiles y del catálogo:
+
+| Artista | Spotify | Apple Music | Amazon Music |
+| --- | --- | --- | --- |
+| JaguarG | [Perfil](https://open.spotify.com/artist/4yFP4cWnWznQzzdgbBdHDY) | [Perfil](https://music.apple.com/us/artist/jaguarg/1602882203) | [Perfil](https://music.amazon.in/artists/B09PLCN4JV/jaguarg) |
+| Orlando Doble O | [Perfil](https://open.spotify.com/artist/5qLP4ibkcPEwLSE7nUBDFl) | [Perfil](https://music.apple.com/us/artist/orlando-doble-o/1608123222) | [Perfil](https://music.amazon.co.uk/artists/B09RVNW6N6/orlando-doble-o) |
+| JAREDSSON | [Perfil](https://open.spotify.com/artist/2Sjwk0JjjIqJbvmm7n6sdr) | [Perfil](https://music.apple.com/us/artist/jaredsson/1636555248) | [Perfil](https://music.amazon.com/artists/B0B7P9X92J/jaredsson) |
+
+La imagen de JaguarG procede de la captura de perfil facilitada por el usuario; conserva la referencia elegida, aunque la imagen actual de Spotify difiere. La de Orlando Doble O procede de su perfil de Spotify. La imagen de JAREDSSON es la portada oficial de [Cargo Lo Mio](https://open.spotify.com/track/03N5CUy0xOBl7cQ4zcf4e3), coherente con la referencia facilitada. Se sirven copias WebP locales; no se cargan reproductores, rastreadores ni audio automático de las plataformas.
 
 Edita `src/data/content.ts` para cambiar enlaces, artistas, lanzamientos, fotografías y eventos. Cada evento admite nombre, edición, fecha ISO `AAAA-MM-DD`, lugar, dirección, imagen y enlace de información. El estado se calcula con la fecha del visitante en la zona `America/Mexico_City`; una fecha vacía significa «por anunciar». No hay venta, precios históricos ni audio simulado.
 

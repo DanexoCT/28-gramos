@@ -18,12 +18,18 @@ test('contenido, recursos, fechas y composición responsive', async ({ page }, t
   await expect(page.locator('.zone-radar')).toBeVisible()
   await expect(page.getByRole('heading', { name: /La próxima fecha/ })).toBeVisible()
   await expect(page.getByText('REALIZADO', { exact: true })).toHaveCount(1)
-  await expect(page.getByRole('link', { name: /Apple Music/ })).toHaveAttribute('href', 'https://music.apple.com/us/album/5-estrellas/6810184416')
-  await expect(page.getByRole('link', { name: /^Spotify/ })).toHaveAttribute('href', 'https://open.spotify.com/album/4CTfRPq2XHiAT4AgysxKav')
-  await expect(page.getByRole('link', { name: /Apple Music/ }).locator('svg.platform-brand-icon')).toHaveCount(1)
-  await expect(page.getByRole('link', { name: /Amazon Music/ }).locator('svg.platform-brand-icon')).toHaveCount(1)
+  await expect(page.locator('.platform-links').getByRole('link', { name: /Apple Music/ })).toHaveAttribute('href', 'https://music.apple.com/us/album/5-estrellas/6810184416')
+  await expect(page.locator('.platform-links').getByRole('link', { name: /^Spotify/ })).toHaveAttribute('href', 'https://open.spotify.com/album/4CTfRPq2XHiAT4AgysxKav')
+  await expect(page.locator('.platform-links').getByRole('link', { name: /Apple Music/ }).locator('svg.platform-brand-icon')).toHaveCount(1)
+  await expect(page.locator('.platform-links').getByRole('link', { name: /Amazon Music/ }).locator('svg.platform-brand-icon')).toHaveCount(1)
+  await expect(page.locator('.artist-card')).toHaveCount(3)
+  await expect(page.locator('.artist-platforms a')).toHaveCount(9)
+  await expect(page.locator('.artist-tracks a')).toHaveCount(9)
+  for (const name of ['JaguarG', 'Orlando Doble O', 'JAREDSSON']) {
+    await expect(page.locator('#artistas').getByRole('heading', { name, exact: true })).toHaveCount(1)
+  }
 
-  for (const id of ['inicio', 'musica', 'eventos', 'colectivo', 'contacto']) {
+  for (const id of ['inicio', 'musica', 'artistas', 'eventos', 'colectivo', 'contacto']) {
     await page.locator(`#${id}`).scrollIntoViewIfNeeded()
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true)
   }

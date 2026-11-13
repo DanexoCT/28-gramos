@@ -54,6 +54,7 @@ export const brand = {
 export const navigation = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Música', href: '#musica' },
+  { label: 'Artistas', href: '#artistas' },
   { label: 'Eventos', href: '#eventos' },
   { label: 'La clica', href: '#colectivo' },
   { label: 'Contacto', href: '#contacto' },
