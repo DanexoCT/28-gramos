@@ -28,7 +28,7 @@ export function HalloweenGallery({ event }: { event: LabelEvent }) {
     <div className="page-shell">
       <Reveal>
         <div className="halloween-topline"><span><Camera size={15} aria-hidden="true" />28FEST / ARCHIVO FOTOGRÁFICO</span><span>{event.date && formatEventDate(event.date).toUpperCase()}</span></div>
-        <div className="halloween-heading"><div><p className="halloween-edition">HALLOWEEN EDITION</p><h2 id="halloween-title">ASÍ RETUMBÓ<br /><span>LA TERRAZA.</span></h2></div><div className="halloween-intro"><p>El escenario. Los disfraces. La clica.<br />Una noche que dejó marca.</p><span><MapPin size={14} aria-hidden="true" />{event.venue} · Zapopan</span></div></div>
+        <div className="halloween-heading"><div><p className="halloween-edition">HALLOWEEN EDITION</p><h2 id="halloween-title">SE SOLTÓ<br /><span>EL DESMADRE.</span></h2></div><div className="halloween-intro"><p>La clica al frente. El bajo a reventar.<br />Halloween a lo 28. Sin bajarle.</p><span><MapPin size={14} aria-hidden="true" />{event.venue} · Zapopan</span></div></div>
       </Reveal>
       <div className="halloween-contact-sheet"><span>BAJO PESADO. NOCHE LARGA.</span><span>{halloweenPhotos.length} MOMENTOS / 2026</span></div>
       <div className="halloween-lead">{halloweenPhotos.slice(0, 2).map((photo, index) => <HalloweenPhoto key={photo.id} photo={photo} index={index} featured onSelect={setSelected} />)}</div>
