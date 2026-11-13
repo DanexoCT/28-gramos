@@ -6,6 +6,7 @@ Landing editorial de 28 Gramos Records: música, 28Fest, colectivo, streetwear y
 
 - Hero fotográfico y navegación responsive con menú móvil.
 - El título «LOS 28» utiliza el número del logotipo original vectorizado en SVG, con fondo transparente y tamaño adaptable.
+- Logotipo actualizado con la captura de 988 × 756 px facilitada el 13 de noviembre de 2026, conservado en WebP sin pérdida. El favicon y el número del título se derivan de esta versión; el script de fotografías los conserva al regenerar recursos.
 - Lanzamiento destacado con portada oficial, enlaces de escucha y tracklist desplegable.
 - Spotify como primera opción de escucha, junto con Apple Music y Amazon Music.
 - Perfiles de JaguarG, Orlando Doble O y JAREDSSON con imágenes oficiales, tres temas populares por artista, dos lanzamientos y enlaces directos a las tres plataformas.
