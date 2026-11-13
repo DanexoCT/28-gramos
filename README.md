@@ -11,6 +11,7 @@ Landing editorial de 28 Gramos Records: música, 28Fest, colectivo, streetwear y
 - Spotify como primera opción de escucha, junto con Apple Music y Amazon Music.
 - Perfiles de JaguarG, Orlando Doble O y JAREDSSON con imágenes oficiales, tres temas populares por artista, dos lanzamientos y enlaces directos a las tres plataformas.
 - Archivo de 28Fest y estado de los eventos calculado según la fecha de Ciudad de México.
+- Galería de Halloween Edition con las 37 fotos proporcionadas: dos tomas principales y un collage de escenario, disfraces, público y detalles, enlazado desde el flyer. Imágenes ampliables y variantes adaptadas a móvil.
 - Galería con ampliación de imágenes, cierre con Escape y restauración del foco.
 - Sección editorial de prendas y contacto mediante el Instagram oficial.
 - Collage de merch con las 23 fotografías proporcionadas: retratos, prendas, detalles y escenas del colectivo. Incluye composiciones de distintos tamaños, imágenes ampliables, versiones WebP adaptadas a móvil y consulta por Instagram.
@@ -94,6 +95,14 @@ node scripts/prepare-merch.mjs "ruta/al/directorio/de/merch"
 ```
 
 Las variantes WebP suman aproximadamente 1,8 MB y se cargan de forma diferida. Cada foto se puede ampliar en el diálogo accesible existente. El movimiento lento se limita a dos fotos y sigue la pausa, la visibilidad de la sección y la preferencia de movimiento reducido. La consulta de prendas dirige al Instagram de la marca; no se publican precios ni existencias sin confirmar.
+
+La galería del 28Fest Halloween, del 17 de octubre de 2026, se edita en `src/data/halloween.ts` y `src/components/HalloweenGallery.css`. Se muestra junto al archivo del evento y conserva su fecha y lugar. El collage utiliza las proporciones originales de las fotos, cuatro columnas en escritorio, tres en tablet y dos en móvil; la toma principal tiene movimiento lento sujeto a las mismas preferencias de pausa y accesibilidad.
+
+```sh
+node scripts/prepare-halloween.mjs "ruta/al/directorio/Halloween event"
+```
+
+El generador prepara las variantes de 400 y hasta 960 px. Reutiliza cuatro fotografías del collage de merch cuando sus originales coinciden exactamente, evitando archivos y descargas duplicados. Las otras 33 fotos y sus variantes suman aproximadamente 3,1 MB, con carga diferida y metadatos de tamaño para mantener el espacio al cargar. Las escenas y los carteles son material documental de esta edición pasada.
 
 ## Publicación
 

@@ -30,11 +30,13 @@ test('contenido, recursos, fechas y composición responsive', async ({ page }, t
   }
 
   await expect(page.locator('.merch-collage button')).toHaveCount(23)
-  for (const id of ['inicio', 'musica', 'artistas', 'eventos', 'colectivo', 'merch', 'contacto']) {
+  await expect(page.locator('#halloween-2026 .halloween-photo-button')).toHaveCount(37)
+  await expect(page.getByRole('link', { name: 'Ver fotos de esta noche' })).toHaveAttribute('href', '#halloween-2026')
+  for (const id of ['inicio', 'musica', 'artistas', 'eventos', 'halloween-2026', 'colectivo', 'merch', 'contacto']) {
     await page.locator(`#${id}`).scrollIntoViewIfNeeded()
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true)
   }
-  const clippedContent = await page.locator('.event-wordmark, .archive-caption, .release-info h3, .footer-headline h2, .merch-heading h2, .merch-frame').evaluateAll(elements => elements.filter(element => {
+  const clippedContent = await page.locator('.event-wordmark, .archive-caption, .release-info h3, .footer-headline h2, .merch-heading h2, .merch-frame, .halloween-heading h2, .halloween-frame').evaluateAll(elements => elements.filter(element => {
     const bounds = element.getBoundingClientRect()
     return bounds.right > window.innerWidth || bounds.left < 0
   }).map(element => element.className || element.tagName))
@@ -102,6 +104,9 @@ test('movimiento automático, cursor nativo y brillo suave respetan las preferen
   await expect(page.locator('.event-copy')).toHaveCSS('opacity', '1')
   await expect(page.locator('.event-archive')).toHaveCSS('opacity', '1')
   await page.screenshot({ path: testInfo.outputPath('motion-events.png'), animations: 'allow' })
+  await page.locator('.halloween-lead').scrollIntoViewIfNeeded()
+  await expect(page.locator('.halloween-lead img').first()).toHaveCSS('animation-name', 'photograph-drift')
+  await expect(page.locator('.halloween-lead img').first()).toHaveCSS('animation-play-state', 'running')
   await page.locator('.merch-frame-hero').scrollIntoViewIfNeeded()
   await expect(page.locator('.merch-frame-hero img')).toHaveCSS('animation-name', 'photograph-drift')
   await expect(page.locator('.merch-frame-hero img')).toHaveCSS('animation-play-state', 'running')
@@ -109,6 +114,7 @@ test('movimiento automático, cursor nativo y brillo suave respetan las preferen
   await expect(page.locator('.site-experience')).toHaveAttribute('data-motion', 'off')
   await expect(page.locator('.stage-beam-one')).toHaveCSS('animation-name', 'none')
   await expect(page.locator('.merch-frame-hero img')).toHaveCSS('animation-name', 'none')
+  await expect(page.locator('.halloween-lead img').first()).toHaveCSS('animation-name', 'none')
   await expect(page.locator('.cursor-accent')).toHaveCount(0)
   await expect(page.locator('.cursor-glow')).toHaveCount(0)
   expect(errors).toEqual([])
@@ -145,6 +151,14 @@ test('menú, tracklist y ampliación de imágenes funcionan con teclado', async 
   await page.keyboard.press('Escape')
   await expect(page.getByRole('dialog')).toHaveCount(0)
   await expect(flyer).toBeFocused()
+
+  const halloween = page.locator('.halloween-photo-button').first()
+  await halloween.click()
+  await expect(page.getByRole('dialog')).toHaveAccessibleName('28FEST / BAJO, LUCES Y FUEGO.')
+  await expect(page.getByRole('dialog').locator('img')).toHaveAttribute('src', /\/images\/halloween-2026\/111316.webp$/)
+  await page.keyboard.press('Escape')
+  await expect(page.getByRole('dialog')).toHaveCount(0)
+  await expect(halloween).toBeFocused()
 
   const photograph = page.getByRole('button', { name: /Ampliar: El colectivo/ })
   await photograph.click()

@@ -1,0 +1,60 @@
+.archive-photo-link { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 20px; min-height: 44px; border: 1px solid #754067; padding: 12px 14px; color: var(--color-paper); font-size: 10px; }
+.archive-photo-link:hover { border-color: var(--color-pink); background: #261427; }
+.halloween-gallery { background: #0d090f; border-bottom: 1px solid #382138; }
+.halloween-topline { display: flex; align-items: center; justify-content: space-between; gap: 18px; font-size: 8px; letter-spacing: .13em; color: #c6b6cb; }
+.halloween-topline > span:first-child { display: flex; gap: 10px; align-items: center; }
+.halloween-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; margin-top: 36px; }
+.halloween-edition { color: var(--color-pink); font-size: 10px; font-weight: 600; letter-spacing: .18em; margin-bottom: 20px; }
+.halloween-heading h2 { font-family: var(--font-display); font-size: clamp(70px, 7.6vw, 110px); font-weight: 800; letter-spacing: -.02em; line-height: .92; }
+.halloween-heading h2 > span { color: var(--color-pink); }
+.halloween-intro { padding-bottom: 5px; }
+.halloween-intro p { color: #c6b6cb; font-size: 13px; line-height: 1.9; }
+.halloween-intro > span { display: flex; align-items: center; gap: 7px; color: #c6b6cb; font-size: 10px; margin-top: 20px; }
+.halloween-contact-sheet { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid #51334f; margin-top: 42px; padding-block: 16px; color: #c6b6cb; font-size: 8px; letter-spacing: .12em; }
+.halloween-lead { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; height: clamp(330px, 39vw, 560px); margin-bottom: 14px; }
+.halloween-frame { min-width: 0; min-height: 0; position: relative; }
+.halloween-frame figure { position: relative; margin: 0; background: #080808; }
+.halloween-photo-button { display: block; position: relative; padding: 0; width: 100%; background: #080808; overflow: hidden; }
+.halloween-photo-button img { display: block; width: 100%; height: auto; }
+.halloween-feature figure { position: absolute; inset: 0; height: 100%; }
+.halloween-feature .halloween-photo-button { height: 100%; }
+.halloween-feature .halloween-photo-button img { height: 100%; object-fit: cover; object-position: 50% 43%; }
+.halloween-frame figure::after { content: ''; position: absolute; inset: 65% 0 0; background: linear-gradient(transparent, #000c); pointer-events: none; }
+.halloween-frame figcaption { position: absolute; z-index: 1; inset: auto 12px 12px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; color: #fff; font-size: 8px; font-weight: 600; letter-spacing: .06em; line-height: 1.6; text-shadow: 0 1px 4px #000; pointer-events: none; }
+.halloween-expand { position: absolute; top: 10px; right: 10px; display: grid; place-items: center; width: 30px; height: 30px; background: #080808b8; border: 1px solid #ffffff40; color: #fff; }
+.halloween-photo-tape { position: absolute; top: 18px; left: 16px; rotate: -3deg; padding: 10px 14px; color: #080808; background: var(--color-paper); font-size: 8px; font-weight: 600; letter-spacing: .1em; pointer-events: none; box-shadow: 0 2px 7px #0006; }
+.halloween-collage { column-count: 4; column-gap: 14px; }
+.halloween-collage .halloween-frame { display: inline-block; vertical-align: top; width: 100%; break-inside: avoid; margin-bottom: 14px; }
+.halloween-outro { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; margin-top: 20px; padding-top: 30px; border-top: 1px solid #51334f; }
+.halloween-outro > div > span { color: var(--color-pink); font-size: 9px; letter-spacing: .12em; }
+.halloween-outro p { font-family: var(--font-display); font-size: 42px; font-weight: 700; line-height: 1.1; margin-top: 12px; }
+[data-motion="on"] .halloween-lead .halloween-frame:first-child img { animation: photograph-drift 25s ease-in-out infinite alternate; }
+@media (hover: hover) {
+  .halloween-photo-button:hover .halloween-expand { background: var(--color-paper); color: #080808; }
+}
+@media (min-width: 768px) and (max-width: 1100px) {
+  .halloween-collage { column-count: 3; }
+  .halloween-heading { gap: 25px; }
+  .halloween-intro p { font-size: 11px; }
+  .halloween-intro > span { font-size: 9px; }
+}
+@media (max-width: 767px) {
+  .halloween-topline { font-size: 7px; letter-spacing: .06em; flex-wrap: wrap; }
+  .halloween-heading { display: block; margin-top: 28px; }
+  .halloween-heading h2 { font-size: clamp(56px, 14vw, 100px); }
+  .halloween-edition { font-size: 8px; margin-bottom: 17px; }
+  .halloween-intro { margin-top: 24px; }
+  .halloween-intro p { font-size: 12px; }
+  .halloween-intro > span { margin-top: 12px; font-size: 9px; }
+  .halloween-contact-sheet { margin-top: 28px; font-size: 7px; letter-spacing: .05em; }
+  .halloween-lead { height: auto; grid-template-columns: 1fr; gap: 10px; margin-bottom: 10px; }
+  .halloween-feature:first-child { aspect-ratio: 1.2; }
+  .halloween-feature:last-child { aspect-ratio: .9; }
+  .halloween-collage { column-count: 2; column-gap: 10px; }
+  .halloween-collage .halloween-frame { margin-bottom: 10px; }
+  .halloween-frame figcaption { inset: auto 8px 8px; font-size: 7px; }
+  .halloween-expand { top: 8px; right: 8px; width: 26px; height: 26px; }
+  .halloween-expand svg { width: 13px; height: 13px; }
+  .halloween-photo-tape { top: 15px; left: 10px; padding: 8px 10px; font-size: 6px; }
+  .halloween-outro p { font-size: 34px; }
+}

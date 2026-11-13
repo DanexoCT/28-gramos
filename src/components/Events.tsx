@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
-import { ArrowUpRight, MapPin, Plus } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, MapPin, Plus } from 'lucide-react'
 import { brand, events, formatEventDate, getEventStatus, type LabelEvent } from '../data/content'
 import { ExternalAnchor, Reveal, SectionLabel, Stars } from './Primitives'
 import { Modal } from './Modal'
 import { assetUrl } from '../lib/assets'
 import { SceneAtmosphere } from './VisualEffects'
+import { HalloweenGallery } from './HalloweenGallery'
 
 export function Events() {
   const [now, setNow] = useState(() => new Date())
@@ -15,8 +16,9 @@ export function Events() {
   }, [])
   const next = events.find(event => getEventStatus(event, now) === 'próximo')
   const archive = events.filter(event => getEventStatus(event, now) === 'realizado')
+  const halloween = archive.find(event => event.id === '28fest-halloween-2026')
 
-  return <section id="eventos" className="events-section section-space" data-ambient aria-labelledby="events-title">
+  return <><section id="eventos" className="events-section section-space" data-ambient aria-labelledby="events-title">
     <SceneAtmosphere festival />
     <div className="page-shell">
       <Reveal><div className="section-topline"><SectionLabel number="02">LA NOCHE SE PRENDE</SectionLabel><Stars /></div></Reveal>
@@ -39,6 +41,7 @@ export function Events() {
               <span className="archive-sticker mission-complete">MISIÓN<br /><strong>CUMPLIDA.</strong></span>
             </button>
             <div className="archive-caption"><div><h3>{event.name} / {event.edition}</h3><p><MapPin size={13} aria-hidden="true" />{event.venue} · Zapopan</p></div><span className="status-badge">REALIZADO</span></div>
+            {event.id === halloween?.id && <a className="archive-photo-link" href="#halloween-2026">Ver fotos de esta noche<ArrowDown size={16} aria-hidden="true" /></a>}
           </article>)}
         </Reveal>
       </div>
@@ -47,5 +50,5 @@ export function Events() {
       {selected.image && <img className="dialog-image" src={selected.image} alt={`Flyer original de Jaredsson en ${selected.name}, ${selected.edition}`} width="1209" height="1209" />}
       <div className="dialog-caption"><strong>EVENTO REALIZADO · {selected.date && formatEventDate(selected.date).toUpperCase()}</strong><p>{selected.venue} · {selected.address}</p><p>Pieza de archivo. Esta edición finalizó; no hay venta de accesos activa.</p></div>
     </Modal>}
-  </section>
+  </section>{halloween && <HalloweenGallery event={halloween} />}</>
 }
