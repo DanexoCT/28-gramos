@@ -5,6 +5,7 @@ Landing editorial de 28 Gramos Records: música, 28Fest, colectivo, streetwear y
 ## Qué incluye
 
 - Hero fotográfico y navegación responsive con menú móvil.
+- El título «LOS 28» utiliza el número del logotipo original vectorizado en SVG, con fondo transparente y tamaño adaptable.
 - Lanzamiento destacado con portada oficial, enlaces de escucha y tracklist desplegable.
 - Spotify como primera opción de escucha, junto con Apple Music y Amazon Music.
 - Archivo de 28Fest y estado de los eventos calculado según la fecha de Ciudad de México.

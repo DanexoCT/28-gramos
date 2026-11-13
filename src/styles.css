@@ -51,7 +51,8 @@ svg { flex-shrink: 0; }
 .live-dot { width: 6px; height: 6px; background: var(--color-red); border-radius: 100%; }
 .eyebrow-divider { color: #8b8589; margin-inline: 3px; }
 .hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(88px, 10.2vw, 147px); line-height: .91; letter-spacing: -.02em; margin-top: 27px; -webkit-text-stroke: 2px #080808; paint-order: stroke fill; text-shadow: 4px 5px 0 #080808; }
-.hero-last-line { display: inline-block; position: relative; color: var(--color-paper); font-family: var(--font-blackletter); font-weight: 400; font-size: .95em; letter-spacing: -.015em; -webkit-text-stroke: .35px currentColor; paint-order: stroke fill; text-shadow: 2px 3px 0 #080808; }
+.hero-last-line { display: inline-block; position: relative; color: var(--color-paper); font-family: var(--font-blackletter); font-weight: 400; font-size: .95em; letter-spacing: -.015em; white-space: nowrap; -webkit-text-stroke: .35px currentColor; paint-order: stroke fill; text-shadow: 2px 3px 0 #080808; }
+.hero-logo-number { display: inline-block; width: .92em; height: .72em; margin-inline: .015em; vertical-align: -.035em; filter: drop-shadow(2px 3px 0 #080808); }
 .hero-last-line > svg { position: absolute; width: 104%; height: 18px; left: -1%; bottom: -12px; fill: none; stroke: var(--color-red); stroke-width: 4px; }
 .hero-description { font-size: 14px; line-height: 1.8; margin-top: 29px; color: #c2bdbb; }
 .hero-buttons { margin-top: 25px; }
