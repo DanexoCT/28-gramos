@@ -57,6 +57,7 @@ export const navigation = [
   { label: 'Artistas', href: '#artistas' },
   { label: 'Eventos', href: '#eventos' },
   { label: 'La clica', href: '#colectivo' },
+  { label: 'Merch', href: '#merch' },
   { label: 'Contacto', href: '#contacto' },
 ]
 

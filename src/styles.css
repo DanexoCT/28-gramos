@@ -208,16 +208,7 @@ svg { flex-shrink: 0; }
 .collective-seal strong { display: block; font-family: var(--font-display); font-size: 35px; font-weight: 800; line-height: 1.1; }
 .collective-seal .stars { gap: 2px; margin-top: 7px; }
 .collective-seal .stars svg { width: 10px; height: 10px; }
-.merch-section { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; background: var(--color-paper); color: #080808; }
-.merch-photo { overflow: hidden; position: relative; }
-.merch-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 72%; filter: grayscale(1); }
-.merch-copy { position: relative; padding: 66px clamp(32px, 5vw, 80px); display: flex; align-items: flex-start; flex-direction: column; justify-content: center; }
 .section-label-light .mission-code { color: #645b62; border-color: #bd151c; }
-.merch-copy h2 { font-family: var(--font-display); font-size: clamp(64px, 6vw, 86px); line-height: .94; letter-spacing: -.02em; font-weight: 800; margin-top: 33px; }
-.merch-copy h2 > span { display: block; font-family: var(--font-blackletter); font-size: clamp(25px, 2.5vw, 35px); font-weight: 400; color: #bd151c; margin-top: 17px; line-height: 1.25; letter-spacing: -.01em; }
-.merch-copy p { font-size: 14px; line-height: 1.85; color: #51494e; margin-top: 27px; }
-.merch-copy .button { margin-top: 26px; }
-.merch-small { display: block; font-size: 7px; letter-spacing: .08em; margin-top: 13px; color: #655e64; }
 .footer { padding-bottom: 24px; }
 .footer-headline { display: flex; align-items: center; justify-content: space-between; gap: 40px; margin-top: 43px; }
 .footer-headline h2 { font-family: var(--font-display); font-size: clamp(70px, 9.8vw, 140px); font-weight: 800; font-variant-numeric: lining-nums; line-height: .96; letter-spacing: -.025em; }
@@ -300,7 +291,6 @@ svg { flex-shrink: 0; }
 .strip-herb { width: 21px; height: 21px; opacity: .66; }
 .collective-symbols { display: flex; align-items: center; gap: 16px; }
 .collective-herb { width: 23px; height: 23px; color: #c1b6bf; opacity: .55; }
-.merch-herb { position: absolute; right: 28px; bottom: 24px; width: 84px; height: 84px; color: #080808; opacity: .07; }
 
 [data-motion="on"] .hero-line-text { animation: headline-enter .85s cubic-bezier(.16, 1, .3, 1) both; }
 [data-motion="on"] .hero-line:nth-child(2) .hero-line-text { animation-delay: .13s; }
@@ -348,7 +338,7 @@ svg { flex-shrink: 0; }
 @keyframes seal-float { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-5px) rotate(2deg); } }
 
 @media (hover: none) and (pointer: coarse) {
-  [data-motion="on"] .photo-button > img, [data-motion="on"] .merch-photo > img { animation: photograph-drift 18s ease-in-out infinite alternate; }
+  [data-motion="on"] .photo-button > img { animation: photograph-drift 18s ease-in-out infinite alternate; }
 }
 
 @media (min-width: 1600px) {
@@ -359,7 +349,7 @@ svg { flex-shrink: 0; }
 @media (max-width: 1100px) {
   .page-shell { width: calc(100% - 72px); }
   .header-inner { gap: 20px; }
-  .main-navigation { gap: 19px; }
+  .main-navigation { gap: 10px; }
   .main-navigation > a { font-size: 10px; }
   .header-instagram { padding-inline: 12px; }
   .hero { min-height: 690px; }
@@ -379,10 +369,6 @@ svg { flex-shrink: 0; }
   .event-layout { gap: 8%; }
   .event-wordmark { font-size: 92px; }
   .event-copy h2 { font-size: 45px; }
-  .merch-section { min-height: 550px; }
-  .merch-copy { padding: 50px 32px; }
-  .merch-copy .section-label { font-size: 8px; gap: 10px; }
-  .merch-copy h2 { font-size: 66px; }
   .footer { padding-bottom: 24px; }
 }
 
@@ -482,14 +468,6 @@ svg { flex-shrink: 0; }
   .collective-seal { left: 1%; top: auto; bottom: 21%; width: 112px; padding: 15px 10px 12px; }
   .collective-seal strong { font-size: 29px; }
   .collective-seal > span:first-child { font-size: 7px; }
-  .merch-section { grid-template-columns: 1fr; min-height: 0; }
-  .merch-photo { aspect-ratio: 1.3; }
-  .merch-photo img { position: absolute; inset: 0; object-position: 50% 75%; }
-  .merch-copy { padding: 43px 25px 49px; }
-  .merch-copy h2 { font-size: clamp(74px, 17vw, 106px); margin-top: 30px; }
-  .merch-copy h2 > span { font-size: 30px; }
-  .merch-copy p { font-size: 12px; margin-top: 25px; }
-  .merch-copy .button { margin-top: 22px; }
   .footer { padding-bottom: 22px; }
   .footer .section-topline > .stars { gap: 3px; }
   .footer .section-topline > .stars svg { width: 11px; height: 11px; }
@@ -527,9 +505,6 @@ svg { flex-shrink: 0; }
   .archive-caption { gap: 6px; }
   .archive-caption h3 { font-size: 9px; }
   .status-badge { padding-inline: 5px; font-size: 6px; }
-  .merch-copy h2 > span { font-size: 27px; }
-  .merch-herb { width: 64px; height: 64px; right: 20px; bottom: 20px; }
-  .merch-copy .section-label { font-size: 7px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

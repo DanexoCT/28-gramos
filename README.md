@@ -13,6 +13,7 @@ Landing editorial de 28 Gramos Records: música, 28Fest, colectivo, streetwear y
 - Archivo de 28Fest y estado de los eventos calculado según la fecha de Ciudad de México.
 - Galería con ampliación de imágenes, cierre con Escape y restauración del foco.
 - Sección editorial de prendas y contacto mediante el Instagram oficial.
+- Collage de merch con las 23 fotografías proporcionadas: retratos, prendas, detalles y escenas del colectivo. Incluye composiciones de distintos tamaños, imágenes ampliables, versiones WebP adaptadas a móvil y consulta por Instagram.
 - Tres familias tipográficas locales: Barlow Condensed, DM Sans y Manufacturing Consent, con titulares góticos en mayúsculas, compactos y de trazo firme. Imágenes WebP, metadatos sociales y animaciones que respetan movimiento reducido.
 - Entradas escalonadas, fotografía con movimiento lento, franja tipográfica continua, reflejos y luces de escenario automáticas en móvil.
 - Detalles de interfaz inspirados en GTA: cinco estrellas, rótulos de misión y radar de distrito dibujado en SVG, con la paleta negra, blanca, roja y fucsia de 28 Gramos. El mapa es gráfico y no utiliza geolocalización.
@@ -86,6 +87,14 @@ Las imágenes optimizadas ya están incluidas en `public/`. Para regenerarlas a 
 node scripts/prepare-assets.mjs "ruta/al/directorio/de/referencias"
 ```
 
+El collage de merch utiliza `src/data/merch.ts` y `src/components/Merch.css`. El orden editorial combina fotos de prendas, retratos, escenas de grupo y detalles; en móvil se reorganiza en dos columnas. Los originales se conservan. Para regenerar sus 23 imágenes con versiones de 400 y hasta 960 px y sus metadatos:
+
+```sh
+node scripts/prepare-merch.mjs "ruta/al/directorio/de/merch"
+```
+
+Las variantes WebP suman aproximadamente 1,8 MB y se cargan de forma diferida. Cada foto se puede ampliar en el diálogo accesible existente. El movimiento lento se limita a dos fotos y sigue la pausa, la visibilidad de la sección y la preferencia de movimiento reducido. La consulta de prendas dirige al Instagram de la marca; no se publican precios ni existencias sin confirmar.
+
 ## Publicación
 
 Sitio publicado: **https://danexoct.github.io/28-gramos/**.
@@ -115,6 +124,6 @@ Las pruebas usan Microsoft Edge si está instalado en Windows. En otros entornos
 npx playwright install chromium
 ```
 
-Los resultados y capturas se guardan en `test-results/` y están excluidos de Git, al igual que `node_modules/`, `dist/`, archivos de entorno y otros archivos generados.
+Los resultados y capturas se guardan en `test-results/` y están excluidos de Git, al igual que `node_modules/`, `dist/`, archivos de entorno y otros archivos generados. La galería de merch también se comprueba para recortes, recursos, ampliación con teclado, restauración del foco y movimiento reducido.
 
 Para verificar la versión publicada con la misma suite, define `PLAYWRIGHT_BASE_URL=https://danexoct.github.io/28-gramos/` antes de ejecutar `npm run test:e2e`. Las pruebas comprueban que se entregue JavaScript compilado y que las imágenes carguen bajo `/28-gramos/`.

@@ -5,8 +5,9 @@ import { Music } from './components/Music'
 import { Artists } from './components/Artists'
 import { Events } from './components/Events'
 import { Collective } from './components/Collective'
+import { Merch } from './components/Merch'
 import { Footer } from './components/Footer'
 
 export default function App() {
-  return <VisualEffectsProvider><a href="#contenido" className="skip-link">Saltar al contenido</a><Header /><main id="contenido"><Hero /><IdentityStrip /><Music /><Artists /><Events /><Collective /></main><Footer /></VisualEffectsProvider>
+  return <VisualEffectsProvider><a href="#contenido" className="skip-link">Saltar al contenido</a><Header /><main id="contenido"><Hero /><IdentityStrip /><Music /><Artists /><Events /><Collective /><Merch /></main><Footer /></VisualEffectsProvider>
 }

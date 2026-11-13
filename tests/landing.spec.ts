@@ -29,11 +29,12 @@ test('contenido, recursos, fechas y composición responsive', async ({ page }, t
     await expect(page.locator('#artistas').getByRole('heading', { name, exact: true })).toHaveCount(1)
   }
 
-  for (const id of ['inicio', 'musica', 'artistas', 'eventos', 'colectivo', 'contacto']) {
+  await expect(page.locator('.merch-collage button')).toHaveCount(23)
+  for (const id of ['inicio', 'musica', 'artistas', 'eventos', 'colectivo', 'merch', 'contacto']) {
     await page.locator(`#${id}`).scrollIntoViewIfNeeded()
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true)
   }
-  const clippedContent = await page.locator('.event-wordmark, .archive-caption, .release-info h3, .footer-headline h2').evaluateAll(elements => elements.filter(element => {
+  const clippedContent = await page.locator('.event-wordmark, .archive-caption, .release-info h3, .footer-headline h2, .merch-heading h2, .merch-frame').evaluateAll(elements => elements.filter(element => {
     const bounds = element.getBoundingClientRect()
     return bounds.right > window.innerWidth || bounds.left < 0
   }).map(element => element.className || element.tagName))
@@ -101,9 +102,13 @@ test('movimiento automático, cursor nativo y brillo suave respetan las preferen
   await expect(page.locator('.event-copy')).toHaveCSS('opacity', '1')
   await expect(page.locator('.event-archive')).toHaveCSS('opacity', '1')
   await page.screenshot({ path: testInfo.outputPath('motion-events.png'), animations: 'allow' })
+  await page.locator('.merch-frame-hero').scrollIntoViewIfNeeded()
+  await expect(page.locator('.merch-frame-hero img')).toHaveCSS('animation-name', 'photograph-drift')
+  await expect(page.locator('.merch-frame-hero img')).toHaveCSS('animation-play-state', 'running')
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await expect(page.locator('.site-experience')).toHaveAttribute('data-motion', 'off')
   await expect(page.locator('.stage-beam-one')).toHaveCSS('animation-name', 'none')
+  await expect(page.locator('.merch-frame-hero img')).toHaveCSS('animation-name', 'none')
   await expect(page.locator('.cursor-accent')).toHaveCount(0)
   await expect(page.locator('.cursor-glow')).toHaveCount(0)
   expect(errors).toEqual([])
@@ -146,6 +151,13 @@ test('menú, tracklist y ampliación de imágenes funcionan con teclado', async 
   await expect(page.getByRole('dialog')).toBeVisible()
   await page.getByRole('button', { name: 'Cerrar imagen' }).click()
   await expect(photograph).toBeFocused()
+  const merch = page.locator('.merch-collage button').first()
+  await merch.click()
+  await expect(page.getByRole('dialog')).toHaveAccessibleName('EL CÓDIGO SE PORTA.')
+  await expect(page.getByRole('dialog').locator('img')).toHaveAttribute('src', /\/images\/merch\/portrait.webp$/)
+  await page.keyboard.press('Escape')
+  await expect(page.getByRole('dialog')).toHaveCount(0)
+  await expect(merch).toBeFocused()
   expect(await page.evaluate(() => document.body.style.overflow)).not.toBe('hidden')
   expect(await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior)).toBe('auto')
   await page.locator('#eventos').scrollIntoViewIfNeeded()
